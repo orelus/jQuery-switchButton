@@ -191,7 +191,15 @@
 
         _initEvents: function() {
             var self = this;
-
+		
+            // Input listener on change
+            this.element.change(function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                self._setOption('checked', $(this).is(':checked'));
+                return false;
+            });
+		
             // Toggle switch when the switch is clicked
             this.button_bg.click(function(e) {
                 e.preventDefault();
